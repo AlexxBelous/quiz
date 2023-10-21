@@ -68,7 +68,7 @@ $operation = 'add'; // Мы хотим выполнить сложение
 $args = [3, 5];      // Аргументы для функции (3 и 5)
 
 $result = call_user_func_array($operation, $args);
-echo "Результат: $result"; // Выведет: "Результат: 8"
+echo "result: $result"; // Выведет: "Результат: 8"
 
 
 ?>
