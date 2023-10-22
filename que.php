@@ -58,6 +58,7 @@ $functionName = 'greet';
 $arguments = ['John', 'Hello'];
 
 // Используем call_user_func_array для вызова функции с аргументами
-call_user_func_array($functionName, $arguments);
+$outPut = call_user_func_array($functionName, $arguments);
+echo $outPut;
 
 ?>
