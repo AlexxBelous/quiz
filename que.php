@@ -5,16 +5,11 @@
 
 <!--Разбор примера работы функции call_user_func_array. -->
 <!--
-1) Напишите function для сложения двух чисел.
-2) Напишите function для умножения двух чисел.
-3) Используй call_user_func_array для вызова функции с переменными аргументами.
+
+1) Напишите function greet, которая будет принимать два аргумента: имя и приветствие. Затем в переменную $functionName задаем имя функции, а в переменную $arguments задаем аргументы в виде массива.
+Используем call_user_func_array для вызова функции с аргументами.
 
 -->
-
-
-
-
-
 
 
 
@@ -53,22 +48,16 @@
 
 <?php
 
-// Функция для сложения двух чисел
-function add($a, $b) {
-    return $a + $b;
+// Создаем обычную функцию, которую мы хотим вызвать
+function greet($name, $greeting) {
+    echo "$greeting, $name!";
 }
 
-// Функция для умножения двух чисел
-function multiply($a, $b) {
-    return $a * $b;
-}
+// Задаем имя функции и аргументы в виде массива
+$functionName = 'greet';
+$arguments = ['John', 'Hello'];
 
-// Используем call_user_func_array для вызова функции с переменными аргументами
-$operation = 'add'; // Мы хотим выполнить сложение
-$args = [3, 5];      // Аргументы для функции (3 и 5)
-
-$result = call_user_func_array($operation, $args);
-echo "result: $result"; // Выведет: "Результат: 8"
-
+// Используем call_user_func_array для вызова функции с аргументами
+call_user_func_array($functionName, $arguments);
 
 ?>
