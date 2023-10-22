@@ -50,11 +50,12 @@ class CreditCard {
     private $_number;
 
     public function __construct($creditCardNumber) {
-        $this->_number = str_replace(' ', '', $creditCardNumber);
+        $this->_number = $creditCardNumber;
     }
 
     public function isValid() {
-        return strlen($this->_number) === 16;
+        $cleanedNumber = str_replace(' ', '', $this->_number);
+        return strlen($cleanedNumber) === 16;
     }
 
     public function mask() {
@@ -62,7 +63,8 @@ class CreditCard {
             return "<span style='color: red;'>Invalid card number.</span>";
         }
 
-        $lastFourDigits = substr($this->_number, -4);
+        $cleanedNumber = str_replace(' ', '', $this->_number);
+        $lastFourDigits = substr($cleanedNumber, -4);
         $maskedPart = implode(' ', str_split(str_repeat('*', 12), 4));
 
         return $maskedPart . ' ' . $lastFourDigits;
@@ -74,5 +76,6 @@ $creditCard = new CreditCard($creditCardNumber);
 
 echo "Original number card: $creditCardNumber<br>";
 echo "Hidden number card: " . $creditCard->mask();
+
 
 ?>
