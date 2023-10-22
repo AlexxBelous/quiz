@@ -5,7 +5,7 @@
 
 <!--
 
-Вы должны создать функцию maskCreditCard, которая принимает номер банковской карты и возвращает его сокращенную версию с защитой конфиденциальности. Функция должна удалять пробелы из номера, проверять, что длина номера составляет 16 символов, и в случае успеха, скрывать все цифры, кроме последних четырех. Результат должен быть представлен в виде строки с пробелами между блоками цифр
+Напишите код класса, который создает объект для обработки номера банковской карты, проверяет его валидность и скрывает большую часть номера, оставляя только последние 4 цифры. Код должен включать в себя код класса CreditCard, который выполняет указанные операции.
 
 -->
 
@@ -46,22 +46,33 @@
 
 <?php
 
-function maskCreditCard($creditCardNumber){
-    $cleanNum = str_replace(' ', '', $creditCardNumber);
-    $lenNumber = strlen($cleanNum);
-    if($lenNumber < 16) {
-        return "<span style='color: red;'>Invalid card number.</span>";
+class CreditCard {
+    private $_number;
+
+    public function __construct($creditCardNumber) {
+        $this->_number = str_replace(' ', '', $creditCardNumber);
     }
-    $fourNum = substr($creditCardNumber, -4);
-    $maskedPart = str_repeat('*', $lenNumber - 4);
-    $maskedPart = implode(' ', str_split($maskedPart, 4));
-    $maskedCardNumber = $maskedPart . ' ' . $fourNum;
-    return $maskedCardNumber;
+
+    public function isValid() {
+        return strlen($this->_number) === 16;
+    }
+
+    public function mask() {
+        if (!$this->isValid()) {
+            return "<span style='color: red;'>Invalid card number.</span>";
+        }
+
+        $lastFourDigits = substr($this->_number, -4);
+        $maskedPart = implode(' ', str_split(str_repeat('*', 12), 4));
+
+        return $maskedPart . ' ' . $lastFourDigits;
+    }
 }
 
 $creditCardNumber = "1234 5578 9012 3343";
-$maskedNumber = maskCreditCard($creditCardNumber);
+$creditCard = new CreditCard($creditCardNumber);
 
 echo "Original number card: $creditCardNumber<br>";
-echo "Hidden number card: $maskedNumber";
+echo "Hidden number card: " . $creditCard->mask();
+
 ?>
