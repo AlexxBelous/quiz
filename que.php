@@ -5,7 +5,8 @@
 
 <!--
 
-Вы должны создать function maskCreditCard, которая принимает номер банковской карты и возвращает его сокращенную версию с защитой конфиденциальности. Функция должна удалять пробелы из номера, проверять, что длина номера составляет 16 символов, и в случае успеха, скрывать все цифры, кроме последних четырех. Результат должен быть представлен в виде строки с пробелами между блоками цифр
+Напишите код, который будет объединять имен студентов и их возрастов из
+ассоциативных массивов в строку с использованием ", " после каждого имени и значения " - " между значениям возраста студентов.
 
 -->
 
@@ -46,22 +47,31 @@
 
 <?php
 
-function maskCreditCard($creditCardNumber){
-    $cleanNum = str_replace(' ', '', $creditCardNumber);
-    $lenNumber = strlen($cleanNum);
-    if($lenNumber < 16) {
-        return "<span style='color: red;'>Invalid card number.</span>";
-    }
-    $fourNum = substr($creditCardNumber, -4);
-    $maskedPart = str_repeat('*', $lenNumber - 4);
-    $maskedPart = implode(' ', str_split($maskedPart, 4));
-    $maskedCardNumber = $maskedPart . ' ' . $fourNum;
-    return $maskedCardNumber;
+
+
+$students = [
+    ["name" => "Alice", "age" => 25, "city" => "New York"],
+    ["name" => "Bob", "age" => 22, "city" => "Los Angeles"],
+    ["name" => "Charlie", "age" => 28, "city" => "Chicago"],
+];
+
+// Concatenate student names with commas
+$names = [];
+foreach ($students as $student) {
+    $names[] = $student["name"];
 }
+$commaName = implode(', ', $names);
 
-$creditCardNumber = "1234 5578 9012 3343";
-$maskedNumber = maskCreditCard($creditCardNumber);
+// Concatenate student ages with dashes
+$ages = [];
+foreach ($students as $student) {
+    $ages[] = $student["age"];
+}
+$dashAges = implode(' - ', $ages);
 
-echo "Original number card: $creditCardNumber<br>";
-echo "Hidden number card: $maskedNumber";
+echo "Student Name: " . $commaName . "<br>";
+echo "Student Age: " . $dashAges;
+
+
+
 ?>

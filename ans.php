@@ -1,9 +1,14 @@
 <?php
 
+$students = [
+    ["name" => "Alice", "age" => 25, "city" => "New York"],
+    ["name" => "Bob", "age" => 22, "city" => "Los Angeles"],
+    ["name" => "Charlie", "age" => 28, "city" => "Chicago"],
+];
 
 
 
 
 
-$creditCardNumber = "1234 5578 9012 3343";
-echo "Original number card: $creditCardNumber<br>";
+
+
