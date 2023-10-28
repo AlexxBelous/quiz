@@ -5,7 +5,7 @@
 
 <!--
 
-Вы должны создать function maskCreditCard, которая принимает номер банковской карты и возвращает его сокращенную версию с защитой конфиденциальности. Функция должна удалять пробелы из номера, проверять, что длина номера составляет 16 символов, и в случае успеха, скрывать все цифры, кроме последних четырех. Результат должен быть представлен в виде строки с пробелами между блоками цифр
+Есть строка "1234567890" необходимо преобразовать её в "12-34-56-78-90". Используйте функцию str_split, чтобы разбить исходную строку на группы по две цифры и вставить дефисы между группами.
 
 -->
 
@@ -46,22 +46,11 @@
 
 <?php
 
-function maskCreditCard($creditCardNumber){
-    $cleanNum = str_replace(' ', '', $creditCardNumber);
-    $lenNumber = strlen($cleanNum);
-    if($lenNumber < 16) {
-        return "<span style='color: red;'>Invalid card number.</span>";
-    }
-    $fourNum = substr($creditCardNumber, -4);
-    $maskedPart = str_repeat('*', $lenNumber - 4);
-    $maskedPart = implode(' ', str_split($maskedPart, 4));
-    $maskedCardNumber = $maskedPart . ' ' . $fourNum;
-    return $maskedCardNumber;
-}
+$phoneNumber = "1234567890";
+$groups = str_split($phoneNumber, 2);
+$formattedPhoneNumber = implode('-', $groups);
 
-$creditCardNumber = "1234 5578 9012 3343";
-$maskedNumber = maskCreditCard($creditCardNumber);
+echo $formattedPhoneNumber; // Выводит "12-34-56-78-90"
 
-echo "Original number card: $creditCardNumber<br>";
-echo "Hidden number card: $maskedNumber";
+
 ?>
