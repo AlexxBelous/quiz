@@ -1,7 +1,5 @@
 <?php
 
-
-$names = ["Alice", "Bob", "Charlie"];
-
+$elements = ["apple", "123", "banana", "456", "cherry"];
 
 

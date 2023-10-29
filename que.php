@@ -5,7 +5,7 @@
 
 <!--
 
-Есть массив строк, необходимо добавить префикс "Hello, " к каждой строке с помощью array_map.
+Напишите PHP-код, который принимает массив элементов и фильтрует его, оставляя только числовые значения. В результате выполнения кода должен быть получен новый массив, содержащий только цифры. "
 
 -->
 
@@ -46,19 +46,13 @@
 
 <?php
 
-// Исходный массив строк
-$names = ["Alice", "Bob", "Charlie"];
+$elements = ["apple", "123", "banana", "456", "cherry"];
 
-// Определяем функцию, которую хотим применить
-function addGreeting($name) {
-    return "Hello, " . $name;
-}
+$filteredNumber = array_filter($elements, function ($element) {
+    return is_numeric($element);
+});
 
-// Применяем функцию addGreeting() к каждой строке массива с помощью array_map
-$greetedNames = array_map('addGreeting', $names);
-
-echo implode("<br>", $greetedNames);
-// $greetedNames будет содержать ["Hello, Alice", "Hello, Bob", "Hello, Charlie"]
-
+$result = implode(', ', $filteredNumber);
+echo $result;
 
 ?>
