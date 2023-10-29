@@ -11,8 +11,7 @@
 
 class CreditCard
 {
-    private $_number;
-    private $_cleanedNumber;
+    private $_number, $_cleanedNumber;
 
     public function __construct($creditCardNumber)
     {
