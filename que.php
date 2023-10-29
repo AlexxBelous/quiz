@@ -5,7 +5,7 @@
 
 <!--
 
-Есть строка "1234567890" необходимо преобразовать её в "12-34-56-78-90". Используйте функцию str_split, чтобы разбить исходную строку на группы по две цифры и вставить дефисы между группами.
+Есть массив строк, необходимо добавить префикс "Hello, " к каждой строке с помощью array_map.
 
 -->
 
@@ -46,11 +46,19 @@
 
 <?php
 
-$phoneNumber = "1234567890";
-$groups = str_split($phoneNumber, 2);
-$formattedPhoneNumber = implode('-', $groups);
+// Исходный массив строк
+$names = ["Alice", "Bob", "Charlie"];
 
-echo $formattedPhoneNumber; // Выводит "12-34-56-78-90"
+// Определяем функцию, которую хотим применить
+function addGreeting($name) {
+    return "Hello, " . $name;
+}
+
+// Применяем функцию addGreeting() к каждой строке массива с помощью array_map
+$greetedNames = array_map('addGreeting', $names);
+
+echo implode("<br>", $greetedNames);
+// $greetedNames будет содержать ["Hello, Alice", "Hello, Bob", "Hello, Charlie"]
 
 
 ?>
