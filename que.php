@@ -55,8 +55,8 @@ $words = str_word_count($text, 1);
 
 // Ищем слово "nocturnal" в массиве слов
 if (in_array("nocturnal", $words, true)) {
-    echo "Слово 'nocturnal' найдено в тексте.";
+    echo "The word 'nocturnal' is found in the text";
 } else {
-    echo "Слово 'nocturnal' не найдено в тексте.";
+    echo "The word 'nocturnal' is not found in the text";
 }
 ?>
