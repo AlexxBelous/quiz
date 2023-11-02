@@ -3,11 +3,9 @@
 
 
 
-<!--Разбор примера работы функции call_user_func_array. -->
-<!--
-1) Напишите function для сложения двух чисел.
-2) Напишите function для умножения двух чисел.
-3) Используй call_user_func_array для вызова функции с переменными аргументами.
+<!--Разбор примера работы функции call_user_func_array.
+
+Необходимо написать PHP-код, который создает экземпляр класса Calculator, вызывает методы add и multiply этого класса с использованием call_user_func_array, и выводит результаты операций сложения и умножения для аргументов 3 и 4?"
 
 -->
 
@@ -53,22 +51,29 @@
 
 <?php
 
-// Функция для сложения двух чисел
-function add($a, $b) {
-    return $a + $b;
+class Calculator {
+    public function add($a, $b) {
+        return $a + $b;
+    }
+
+    public function multiply($a, $b) {
+        return $a * $b;
+    }
 }
 
-// Функция для умножения двух чисел
-function multiply($a, $b) {
-    return $a * $b;
-}
+// Создаем экземпляр класса Calculator
+$calculator = new Calculator();
 
-// Используем call_user_func_array для вызова функции с переменными аргументами
-$operation = 'add'; // Мы хотим выполнить сложение
-$args = [3, 5];      // Аргументы для функции (3 и 5)
+// Массив аргументов для вызова метода
+$args = [3, 4];
 
-$result = call_user_func_array($operation, $args);
-echo "result: $result"; // Выведет: "Результат: 8"
+// Вызываем метод add с использованием call_user_func_array
+$result = call_user_func_array([$calculator, 'add'], $args);
+echo "Результат сложения: $result\n";
+
+// Вызываем метод multiply с использованием call_user_func_array
+$result = call_user_func_array([$calculator, 'multiply'], $args);
+echo "Результат умножения: $result\n";
 
 
 ?>
