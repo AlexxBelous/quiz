@@ -5,7 +5,7 @@
 
 <!--
 
-Напишите function на PHP с названием `cutString`, которая обрезает заданный текст до определенного количества слов, при этом гарантируя, что обрезание происходит на границе слов для сохранения их целостности?
+Используя цикл for перебери массив и получить все ключи (марки автомобилей). И выведи результат на экран.
 
 
 
@@ -54,21 +54,29 @@
 <?php
 
 
-$text = "Under the shimmering moonlight, the night was filled with secrets. A gentle breeze rustled the leaves, whispering stories of distant lands. Stars adorned the velvety sky, like diamonds in the abyss. Nature's symphony played on, as creatures of the night began their nocturnal dances. An owl hooted in the distance, a mysterious serenade to the moon. The world slept, unaware of the magic that unfolded under the celestial canvas. Dreams took flight on the wings of imagination, weaving tales of wonder and enchantment. In this timeless night, possibilities were as boundless as the cosmos, and the universe held its breath, awaiting the next chapter of the unknown.";
+$cars = array(
+    "Toyota" => array(
+        "color" => "Blue",
+        "year" => 2022
+    ),
+    "Honda" => array(
+        "color" => "Red",
+        "year" => 2021
+    ),
+    "Ford" => array(
+        "color" => "Green",
+        "year" => 2020
+    )
+);
 
 
-function cutString($text, $wordCount)
-{
-    $words = explode(' ', $text);
-    if (count($words) <= $wordCount) {
-        return $text;
-    } else {
-        $truncatedText = array_slice($words, 0, $wordCount);
-        $finalText = implode(' ', $truncatedText);
-        return $finalText;
-    }
+$brands = array_keys($cars);
+
+$length = count($brands);
+
+for ($i = 0; $i < $length; $i++) {
+    $brand = $brands[$i];
+    echo "Brand: $brand" . "<br>";
 }
 
-
-echo cutString($text, 10);
 ?>
