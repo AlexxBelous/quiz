@@ -5,7 +5,7 @@
 
 <!--
 
-Используя цикл for перебери массив и получить все ключи (марки автомобилей). И выведи результат на экран.
+У вас есть массив $numbers, содержащий некоторые целые числа. Ваша задача - использовать цикл for, чтобы создать новый массив $newNumbers, в котором каждое число из $numbers будет возведено в квадрат. Затем выведите оба массива.
 
 
 
@@ -54,29 +54,19 @@
 <?php
 
 
-$cars = array(
-    "Toyota" => array(
-        "color" => "Blue",
-        "year" => 2022
-    ),
-    "Honda" => array(
-        "color" => "Red",
-        "year" => 2021
-    ),
-    "Ford" => array(
-        "color" => "Green",
-        "year" => 2020
-    )
-);
+$numbers = array(2, 4, 6, 8, 10);
 
 
-$brands = array_keys($cars);
-
-$length = count($brands);
+$newNumbers = array();
+$length = count($numbers);
 
 for ($i = 0; $i < $length; $i++) {
-    $brand = $brands[$i];
-    echo "Brand: $brand" . "<br>";
+    $squaredNumbers[] = $numbers[$i] ** 2;
 }
+
+
+echo implode(', ', $squaredNumbers) . '<br>';
+
+echo implode(', ', $numbers);
 
 ?>
