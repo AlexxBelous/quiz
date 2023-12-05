@@ -5,7 +5,7 @@
 
 <!--
 
-У вас есть массив $numbers, содержащий некоторые целые числа. Ваша задача - использовать цикл for, чтобы создать новый массив $newNumbers, в котором каждое число из $numbers будет возведено в квадрат. Затем выведите оба массива.
+Напиши function с названием calculateSum, которая должна принимать массив чисел и возвращает их сумму. Если массив пуст, то функция возвращает текст - The array is empty.
 
 
 
@@ -50,23 +50,23 @@
 
 
 <!--******************************************-->
-
 <?php
 
+function calculateSum(array $numbers)
+{
+    if (empty($numbers)) {
+        return "The array is empty";
+    }
 
-$numbers = array(2, 4, 6, 8, 10);
+    $sum = 0;
+    foreach ($numbers as $number) {
+        $sum += $number;
+    }
 
-
-$newNumbers = array();
-$length = count($numbers);
-
-for ($i = 0; $i < $length; $i++) {
-    $squaredNumbers[] = $numbers[$i] ** 2;
+    return $sum;
 }
 
+$numArr = [25, 56, 74, 4];
 
-echo implode(', ', $squaredNumbers) . '<br>';
+echo calculateSum($numArr);
 
-echo implode(', ', $numbers);
-
-?>
