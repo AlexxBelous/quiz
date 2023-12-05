@@ -5,9 +5,7 @@
 
 <!--
 
-Напиши function с названием calculateSum, которая должна принимать массив чисел и возвращает их сумму. Если массив пуст, то функция возвращает текст - The array is empty.
-
-
+Напиши function, которая должна  принимать массив $items и переменное количество параметров $params. Она должна удалять из массива $items все значения, которые соответствуют значениям, переданным в $params и выводить элементы, которые остались на экран.
 
 -->
 
@@ -49,24 +47,20 @@
 
 
 
-<!--*******************102***********************-->
+<!--*******************92***********************-->
 <?php
 
-function calculateSum(array $numbers)
+function filterOut(array $items, ...$params): array
 {
-    if (empty($numbers)) {
-        return "The array is empty";
-    }
 
-    $sum = 0;
-    foreach ($numbers as $number) {
-        $sum += $number;
-    }
+    $filteredItems = array_filter($items, fn($item) => !in_array($item, $params));
 
-    return $sum;
+    return array_values($filteredItems);
 }
 
-$numArr = [25, 56, 74, 4];
+$arr = [2, 1, 2, 3, 45, 3, 2];
 
-echo calculateSum($numArr);
+
+
+echo implode(', ', filterOut($arr, 2));
 
